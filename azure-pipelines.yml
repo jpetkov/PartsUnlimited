@@ -13,14 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseDotNet@2
-  inputs:
-    version: '5.0.x'
-    includePreviewVersions: true # Required for preview versions
+- script: dotnet --version
+  displayName: 'dotnet build $(buildConfiguration)'
 
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    arguments: '--configuration $(buildConfiguration)'
 
