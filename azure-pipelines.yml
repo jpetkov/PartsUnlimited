@@ -7,10 +7,12 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-18.04'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
+
+
 
 steps:
 - script: dotnet --version $(buildConfiguration)
