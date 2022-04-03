@@ -7,15 +7,26 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2022'
 
 variables:
   buildConfiguration: 'Release'
 
 
-
 steps:
-- script: dotnet --version $(buildConfiguration)
+
+- task: UseDotNet@2
+  inputs:
+    version: '3.1.x'
+
+- task: UseDotNet@2
+  displayName: 'Install .NET Core SDK'
+  inputs:
+    version: 3.1.x
+    performMultiLevelLookup: true
+
+
+- script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
 
